@@ -1,0 +1,12 @@
+#pragma once
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <string>
+#include <cstdlib>
+#include <cerrno>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <dpp/dpp.h>
+#include "dotenv.h"
+#include <pthread.h>
