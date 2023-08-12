@@ -34,3 +34,9 @@ TypeTracker is an advanced keylogging tool developed in C++ specifically for the
    ```
 
 3. Distribute at your own risk.
+
+## Ethical Considerations
+TypeTracker is intended for responsible and ethical use. Ensure that you have proper authorization before using this tool and adhere to legal regulations and ethical guidelines in your jurisdiction.
+
+## Disclaimer
+This tool is provided for educational and ethical purposes only. The authors and contributors are not responsible for any misuse or illegal activities carried out with this software.
