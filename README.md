@@ -26,4 +26,11 @@ TypeTracker is an advanced keylogging tool developed in C++ specifically for the
    ```sh
    git clone https://github.com/your-username/TypeTracker.git
    cd TypeTracker
-```
+   ```
+
+2. Build the keylogger
+   ```sh
+    g++ main.cpp -o main -lX11 -ldpp -lpthread
+   ```
+
+3. Distribute at your own risk.
