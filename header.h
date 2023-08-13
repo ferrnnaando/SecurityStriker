@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <cstring>
 #include <string>
-#include <stdlib>
+#include <stdlib.h> //diferrence betweeen stdlib.h and cstlid, stido and cstdio
 #include <cerrno>
 #include <unistd.h>
 #include <X11/Xlib.h>
