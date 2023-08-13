@@ -1,9 +1,9 @@
 #pragma once
 #include <iostream>
-#include <cstdio>
+#include <stdio.h>
 #include <cstring>
 #include <string>
-#include <cstdlib>
+#include <stdlib>
 #include <cerrno>
 #include <unistd.h>
 #include <X11/Xlib.h>
@@ -11,6 +11,6 @@
 #include <X11/keysym.h>
 #include <dpp/dpp.h>
 #include "dotenv.h"
-#include <pthread.h>
-#include <mutex>
 #include <thread>
+#include <linux/input.h>
+#include <fcntl.h>
