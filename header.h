@@ -14,3 +14,5 @@
 #include <thread>
 #include <linux/input.h>
 #include <fcntl.h>
+#include "variables.cpp"
+#include <exception>
