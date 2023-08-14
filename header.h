@@ -7,6 +7,7 @@
 #include <stdlib.h> //diferrence betweeen stdlib.h and cstlid, stido and cstdio
 #include <cerrno>
 #include <unistd.h>
+#include <sys/stat.h>
 #include <dpp/dpp.h>
 #include "dotenv.h"
 #include <thread>
