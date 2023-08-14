@@ -1,4 +1,5 @@
 #pragma once
+#include <opencv2/opencv.hpp>
 #include <iostream>
 #include <stdio.h>
 #include <cstring>
@@ -6,9 +7,6 @@
 #include <stdlib.h> //diferrence betweeen stdlib.h and cstlid, stido and cstdio
 #include <cerrno>
 #include <unistd.h>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/keysym.h>
 #include <dpp/dpp.h>
 #include "dotenv.h"
 #include <thread>

