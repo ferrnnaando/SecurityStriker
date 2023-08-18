@@ -1,4 +1,4 @@
-# TypeTracker: Linux Keylogger Connected with Discord
+# SecurityStriker: Linux Keylogger Connected with Discord
 
 TypeTracker is an advanced keylogging tool developed in C++ specifically for the Linux operating system. It enables discreet and responsible monitoring of keyboard input, while also providing a secure connection to Discord for seamless reporting and analysis.
 
